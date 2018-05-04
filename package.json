@@ -1,0 +1,18 @@
+{
+  "name": "flynude",
+  "version": "0.0.1",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "test": "node bot.js"
+  },
+  "author": "Hz.Sağkol",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "client": "0.0.1",
+    "discord.js": "^11.3.2",
+    "moment": "^2.22.1",
+    "moment-duration-format": "^2.2.2"
+  }
+}
