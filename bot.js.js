@@ -87,27 +87,31 @@ client.on('message', msg => {
 });
 
 client.on('guildMemberAdd', member => {
-const channel = member.guild.channels.find('name', 'mod-log'); 
-if (!channel) return;
-const embed = new Discord.RichEmbed()
-.setColor('RANDOM')
-.setAuthor(member.user.username, member.user.avatarURL)
-.setThumbnail(member.user.avatarURL)
-.setTitle('📥 | Sunucuya katıldı!')
-.setTimestamp()
-channel.sendEmbed(embed); 
+  let guild = member.guild;
+  let joinRole = guild.roles.find('name', 'Üye');
+  member.addRole(joinRole);
+
+  const channel = member.guild.channels.find('name', 'fly-log');
+  if (!channel) return;
+  const embed = new Discord.RichEmbed()
+  .setColor('0x00cc44')
+  .setAuthor(member.user.username, member.user.avatarURL)
+  .setThumbnail(member.user.avatarURL)
+  .setTitle('📥 | Sunucuya katıldı!')
+  .setTimestamp()
+  channel.sendEmbed(embed);
 });
 
 client.on('guildMemberRemove', member => {
-const channel = member.guild.channels.find('name', 'mod-log');
-if (!channel) return;
-const embed = new Discord.RichEmbed()
-.setColor('RANDOM')
-.setAuthor(member.user.username, member.user.avatarURL)
-.setThumbnail(member.user.avatarURL)
-.setTitle('📤 | Sunucudan ayrıldı | Görüşmek üzere!')
-.setTimestamp()
-channel.sendEmbed(embed); 
+  const channel = member.guild.channels.find('name', 'fly-log');
+  if (!channel) return;
+  const embed = new Discord.RichEmbed()
+  .setColor('RANDOM')
+  .setAuthor(member.user.username, member.user.avatarURL)
+  .setThumbnail(member.user.avatarURL)
+  .setTitle('📤 | Sunucudan ayrıldı')
+  .setTimestamp()
+  channel.sendEmbed(embed); 
 });
 
 client.on ('message', message => {
@@ -134,6 +138,149 @@ client.on("message", message => {
            }})
   }
   if (message.channel.bot) return;
+});
+
+client.on("message", message => {
+  if (message.content.toLowerCase() === prefix + 'avatar 0') {
+  if (message.author.id !== "349167005968105482") {
+    message.reply('sie');
+  } else {
+    message.channel.sendMessage(`Fly Yazılı Fotoğrafı başarılı bir şekilde profilime koydum.`).then(msg => {
+    console.log(`Yeniden başlıyorum..`);
+    client.user.setAvatar(`https://cdn.discordapp.com/attachments/441237885841178626/442267463518912522/superthumb.jpg`);
+  })
+ }
+}
+});
+
+client.on("message", message => {
+  if (message.content.toLowerCase() === prefix + 'avatar 1') {
+  if (message.author.id !== "349167005968105482") {
+    message.reply('sie');
+  } else {
+    message.channel.sendMessage(`Türk bayrağını başarılı bir şekilde profilime koydum.`).then(msg => {
+    console.log(`Yeniden başlıyorum..`);
+    client.user.setAvatar(`https://cdn.discordapp.com/attachments/441237885841178626/442263106559803393/trbayrak-1.jpg`);
+  })
+ }
+}
+});
+
+client.on("message", message => {
+    if (message.content.toLowerCase() === prefix + 'gamesunucu') {
+    if (message.author.id !== "349167005968105482") {
+      message.reply('sie');
+    } else {
+      message.channel.sendMessage(`Başarılı bir şekilde profilime sunucu sayımı koydum.`).then(msg => {
+      console.log(`Yeniden başlıyorum..`);
+      client.user.setGame(`${client.guilds.size} Sunucu 👀`, "https://www.twitch.tv/hzsagkol");
+    })
+   }
+  }
+});
+
+client.on("message", message => {
+    if (message.content.toLowerCase() === prefix + 'gameyeni') {
+    if (message.author.id !== "349167005968105482") {
+      message.reply('sie');
+    } else {
+      message.channel.sendMessage(`Başarılı bir şekilde profilime yardım ve daveti koydum.`).then(msg => {
+      console.log(`Yeniden başlıyorum..`);
+      client.user.setGame(`${prefix}yardım ${prefix}davet ✨ `, "https://www.twitch.tv/hzsagkol");
+    })
+   }
+  }
+});
+
+client.on("message", message => {
+    if (message.content.toLowerCase() === prefix + 'gameyenilik') {
+    if (message.author.id !== "349167005968105482") {
+      message.reply('sie');
+    } else {
+      message.channel.sendMessage(`Başarılı bir şekilde profilime yeniliğimi koydum.`).then(msg => {
+      console.log(`Yeniden başlıyorum..`);
+      client.user.setGame(`Yeni komutlar eklendi! görmek içim: ${prefix}yardım ✨ `, "https://www.twitch.tv/hzsagkol");
+    })
+   }
+  }
+});
+
+client.on("message", message => {
+    if (message.content.toLowerCase() === prefix + 'gamepls') {
+    if (message.author.id !== "349167005968105482") {
+      message.reply('sie');
+    } else {
+      message.channel.sendMessage(`Başarılı bir şekilde profilime yalvarma mesajını koydum.`).then(msg => {
+      console.log(`Yeniden başlıyorum..`);
+      client.user.setGame(`Arkadaşlar gelişmemiz için lütfen botu paylaşır mısınız? `, "https://www.twitch.tv/hzsagkol");
+    })
+   }
+  }
+});
+
+client.on("message", message => {
+    if (message.content.toLowerCase() === prefix + 'gametoplam') {
+    if (message.author.id !== "349167005968105482") {
+      message.reply('sie');
+    } else {
+      message.channel.sendMessage(`Başarılı bir şekilde profilime bütün sayılarımı koydum.`).then(msg => {
+      console.log(`Yeniden başlıyorum..`);
+      client.user.setGame(`${prefix}yardım ✨ ${client.guilds.size} Sunucu ${client.users.size} Kullanıcı `, "https://www.twitch.tv/hzsagkol");
+    })
+   }
+  }
+});
+
+client.on("message", message => {
+    if (message.content.toLowerCase() === prefix + 'gamekanal') {
+    if (message.author.id !== "349167005968105482") {
+      message.reply('sie');
+    } else {
+      message.channel.sendMessage(`Başarılı bir şekilde profilime kanal sayımı koydum.`).then(msg => {
+      console.log(`Yeniden başlıyorum..`);
+      client.user.setGame(`${client.channels.size} Kanal 📄`, "https://www.twitch.tv/hzsagkol");
+    })
+   }
+  }
+});
+
+client.on("message", message => {
+    if (message.content.toLowerCase() === prefix + 'gamekullanıcı') {
+    if (message.author.id !== "349167005968105482") {
+      message.reply('sie');
+    } else {
+      message.channel.sendMessage(`Başarılı bir şekilde profilime kullanıcı sayımı koydum.`).then(msg => {
+      console.log(`Yeniden başlıyorum..`);
+      client.user.setGame(`${client.users.size} Kullanıcı 💞`, "https://www.twitch.tv/hzsagkol");
+    })
+   }
+  }
+});
+
+client.on("message", message => {
+    if (message.content.toLowerCase() === prefix + 'gamebakım') {
+    if (message.author.id !== "349167005968105482") {
+      message.reply('sie');
+    } else {
+      message.channel.sendMessage(`Başarılı bir şekilde profilime bakım komudunu koydum.`).then(msg => {
+      console.log(`Yeniden başlıyorum..`);
+      client.user.setGame(`BAKIMDAYIZ `, "https://www.twitch.tv/hzsagkol");
+    })
+   }
+  }
+});
+
+client.on("message", message => {
+    if (message.content.toLowerCase() === prefix + 'gameyardım') {
+    if (message.author.id !== "349167005968105482") {
+      message.reply('sie');
+    } else {
+      message.channel.sendMessage(`Başarılı bir şekilde profilime yardım komudunu koydum.`).then(msg => {
+      console.log(`Yeniden başlıyorum..`);
+      client.user.setGame(`${prefix}yardım  ✨ `, "https://www.twitch.tv/hzsagkol");
+    })
+   }
+  }
 });
 
 
